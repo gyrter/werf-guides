@@ -4,7 +4,7 @@ configVersion: 1
 artifact: buildapp
 from: golang:1.15-alpine
 git:
-- add: /
+- add: /examples/golang/015_deploy_app
   to: /app
   includePaths:
   - 'go.**'
