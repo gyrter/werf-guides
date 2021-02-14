@@ -5,7 +5,7 @@ artifact: buildapp
 from: golang:1.15-alpine
 git:
 - add: /
-  to: /app/
+  to: /app
   includePaths:
   - 'go.**'
   - 'cmd/demoapp/**'
@@ -16,11 +16,11 @@ git:
     - "cmd/demoapp/*"
 shell:
   beforeInstall:
-  - mkdir -p /app/ && apk add --no-cache --update gcc musl-dev
+  - mkdir -p /app/ && apk add --no-cache --update gcc musl-dev && ls -la /app
   install:
-  - cd /app/ && go mod download
+  - cd /app/ && ls -la /app && go mod download
   setup:
-  - cd /app/ && go build ./cmd/demoapp
+  - cd /app/ && ls -la /app && go build ./cmd/demoapp
 ---
 image: basicapp
 from: alpine:3.13
