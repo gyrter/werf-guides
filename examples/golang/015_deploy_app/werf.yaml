@@ -7,8 +7,8 @@ git:
 - add: /
   to: /app/
   includePaths:
-  - '/go.**'
-  - '/cmd/demoapp/**'
+  - 'go.**'
+  - 'cmd/demoapp/**'
   stageDependencies:
     install:
     - "go.*"
@@ -16,7 +16,7 @@ git:
     - "cmd/demoapp/*"
 shell:
   beforeInstall:
-  - apk add --no-cache --update gcc musl-dev
+  - mkdir -p /app/ && apk add --no-cache --update gcc musl-dev
   install:
   - cd /app/ && go mod download
   setup:
