@@ -3,6 +3,9 @@ configVersion: 1
 ---
 artifact: buildapp
 from: golang:1.15-alpine
+mount:
+- from: build_dir
+  to: /root/.cache/go-build
 git:
 - add: /examples/golang/015_deploy_app
   to: /app
@@ -21,10 +24,12 @@ shell:
   - cd /app/ 
   - go mod download
   - whoami
-  - ls -la $HOME
+  - ls -laR $HOME
   setup:
   - cd /app/ 
   - go build ./cmd/demoapp
+  - ls -laR $HOME
+  - env
 ---
 image: basicapp
 from: alpine:3.13
