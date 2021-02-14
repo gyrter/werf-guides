@@ -17,9 +17,8 @@ git:
 shell:
   beforeInstall:
   - mkdir -p /app/ && apk add --no-cache --update gcc musl-dev && ls -la /app
-  install:
-  - cd /app/ && ls -la /app && go mod download
   setup:
+  - cd /app/ && ls -la /app && go mod download
   - cd /app/ && ls -la /app && go build ./cmd/demoapp
 ---
 image: basicapp
