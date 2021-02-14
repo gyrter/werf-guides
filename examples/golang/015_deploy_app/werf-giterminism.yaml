@@ -1,0 +1,9 @@
+giterminismConfigVersion: 1
+config:  # giterminism configuration for werf.yaml
+  allowUncommitted: true
+  stapel:
+    allowFromLatest: true
+    git:
+      allowBranch: true
+    mount:
+      allowBuildDir: true
