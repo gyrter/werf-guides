@@ -1,5 +1,39 @@
 project: werf-guided-golang
 configVersion: 1
 ---
+artifact: buildapp
+from: golang:1.15-alpine
+docker:
+  WORKDIR: /app
+git:
+- add: /go.* 
+  to: /app
+  stageDependencies:
+    install:
+    - "*"
+- add: /cmd
+  to: /app/cmd
+  stageDependencies:
+    setup:
+    - "*"
+shell:
+  beforeInstall:
+  - apk add --no-cache --update gcc musl-dev
+  install:
+  - go mod download
+  setup:
+  - go build ./cmd/demoapp
+---
 image: basicapp
-dockerfile: Dockerfile
+from: alpine:3.13
+import:
+- artifact: buildapp
+  add: /app/demoapp
+  to: /app/demoapp
+  after: setup
+docker:
+  WORKDIR: /app
+  CMD: ["/app/demoapp"]
+git:
+- add: /app.db
+  to: /app/app.db
