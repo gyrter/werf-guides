@@ -3,8 +3,6 @@ configVersion: 1
 ---
 artifact: buildapp
 from: golang:1.15-alpine
-docker:
-  WORKDIR: /app
 git:
 - add: /go.* 
   to: /app
@@ -20,9 +18,9 @@ shell:
   beforeInstall:
   - apk add --no-cache --update gcc musl-dev
   install:
-  - go mod download
+  - cd /app/ && go mod download
   setup:
-  - go build ./cmd/demoapp
+  - cd /app/ && go build ./cmd/demoapp
 ---
 image: basicapp
 from: alpine:3.13
