@@ -6,6 +6,8 @@ from: golang:1.15-alpine
 mount:
 - from: build_dir
   to: /root/.cache/go-build
+- from: build_dir
+  to: /etc/apk/cache
 git:
 - add: /examples/golang/015_deploy_app
   to: /app
@@ -19,17 +21,15 @@ git:
     - "cmd/demoapp/*"
 shell:
   beforeInstall:
-  - mkdir -p /app/ && apk add --no-cache --update gcc musl-dev && ls -la /app
+  - mkdir -p /app/ 
+  - apk add --update gcc musl-dev && ls -la /app
+  - ls -la /etc/apk/cache
   install:
   - cd /app/ 
   - go mod download
-  - whoami
-  - ls -laR $HOME
   setup:
   - cd /app/ 
   - go build ./cmd/demoapp
-  - ls -laR $HOME
-  - env
 ---
 image: basicapp
 from: alpine:3.13
