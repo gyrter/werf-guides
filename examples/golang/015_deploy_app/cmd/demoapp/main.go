@@ -140,7 +140,7 @@ func addLabel(w http.ResponseWriter, r *http.Request) {
 		handleAppError(w, err)
 		return
 	}
-	labelJson := fmt.Sprintf(`{"id":%d, "label":"%s"}`,
+	labelJson := fmt.Sprintf(`{"Id":%d, "Label":"%s"}`,
 		lastId,
 		labelText,
 	)
