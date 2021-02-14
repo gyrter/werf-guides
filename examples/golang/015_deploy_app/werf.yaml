@@ -7,8 +7,8 @@ git:
 - add: /
   to: /app/
   includePaths:
-  - 'go.**'
-  - 'cmd/demoapp/**'
+  - '/go.**'
+  - '/cmd/demoapp/**'
   stageDependencies:
     install:
     - "go.*"
