@@ -5,12 +5,12 @@ artifact: buildapp
 from: golang:1.15-alpine
 git:
 - add: /go.mod
-  to: /app
+  to: /app/go.mod
   stageDependencies:
     install:
     - "*"
 - add: /go.sum
-  to: /app
+  to: /app/go.sum
   stageDependencies:
     install:
     - "*"
