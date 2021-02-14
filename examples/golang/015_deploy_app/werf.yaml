@@ -4,7 +4,7 @@ configVersion: 1
 artifact: buildapp
 from: golang:1.15-alpine
 git:
-- add: /go.* 
+- add: /go.*
   to: /app
   stageDependencies:
     install:
