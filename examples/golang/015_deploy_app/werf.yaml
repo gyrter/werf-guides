@@ -20,6 +20,8 @@ shell:
   install:
   - cd /app/ 
   - go mod download
+  - whoami
+  - ls -la $HOME
   setup:
   - cd /app/ 
   - go build ./cmd/demoapp
