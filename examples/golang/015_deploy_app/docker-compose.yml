@@ -1,9 +1,8 @@
-version: "3.9"
+version: "3.3"
 services:
   app:
     environment:
-      - name: "SQLITE_FILE"
-        value: "/app/app.db"
+      - "SQLITE_FILE=/app/app.db"
     ports:
       - "3000:3000"
-    image: basicapp
+    image: $WERF_BASICAPP_DOCKER_IMAGE_NAME

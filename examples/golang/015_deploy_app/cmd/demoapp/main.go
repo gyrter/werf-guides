@@ -31,7 +31,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Could not connect to SQLite database: %v", err)
 	}
-	log.Printf("Connected to SQLite database.")
+	log.Printf("Connected to SQLite database!")
 
 	// Close db on SIGTERM.
 	go func() {
