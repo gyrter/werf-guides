@@ -22,8 +22,7 @@ git:
 shell:
   beforeInstall:
   - mkdir -p /app/ 
-  - apk add --update gcc musl-dev && ls -la /app
-  - ls -la /etc/apk/cache
+  - apk add --update gcc musl-dev
   install:
   - cd /app/ 
   - go mod download
