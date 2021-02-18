@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  app:
+    environment:
+      - name: "SQLITE_FILE"
+        value: "/app/app.db"
+    ports:
+      - "3000:3000"
+    image: basicapp
