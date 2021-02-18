@@ -28,11 +28,10 @@
 #            value: "postgres"
 #      containers:
 #      - name: init-tables
-#{{ tuple "basicapp" . | include "werf_container_image" | indent 8 }}
+#        image: {{ .Values.werf.image.basicapp }}
 #        command: ['node']
 #        args: ['node_modules/node-pg-migrate/bin/node-pg-migrate', 'up']
 #        workingDir: /app
 #        env:
 #        - name: DATABASE_URL
 #          value: "postgres://postgres:mysecretpassword@mydomain.io:5432/postgres"
-#{{ tuple "basicapp" . | include "werf_container_env" | indent 8 }}
