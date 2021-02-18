@@ -1,0 +1,27 @@
+project: werf-guided-nodejs
+configVersion: 1
+---
+image: basicapp
+from: node:14-stretch
+mount:
+- from: build_dir
+  to: /var/cache/apt/
+git:
+- add: /examples/nodejs/290_local_dev
+  to: /app
+  excludePaths:
+  - '.helm/*'
+  - 'werf-**'
+  - 'Dockerfile'
+  - 'README.md'
+  stageDependencies:
+    install:
+    - 'package.json'
+    - 'package-lock.json'
+shell:
+  beforeInstall:
+  - apt update
+  - apt install -y tzdata locales
+  install:
+  - cd /app/ 
+  - npm ci
