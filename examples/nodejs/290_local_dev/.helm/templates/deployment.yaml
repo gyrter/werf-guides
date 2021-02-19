@@ -17,7 +17,7 @@ spec:
     spec:
 {{- if .Values.dockerconfigjson }}
       imagePullSecrets:
-      - registrysecret
+      - name: registrysecret
 {{- end }}
       initContainers:
       - name: wait-postgres
