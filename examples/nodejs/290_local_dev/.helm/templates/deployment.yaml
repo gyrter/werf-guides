@@ -21,7 +21,7 @@ spec:
         command: ['/scripts/pg_isready.sh']
         env:
         - name: HOST
-          value: "mydomain.io"
+          value: "postgresql"
         - name: PORT
           value: "5432"
         - name: DBNAME
@@ -36,7 +36,7 @@ spec:
           protocol: TCP
         env:
           - name: "POSTGRESQL_HOST"
-            value: "mydomain.io"
+            value: "postgresql"
           - name: "POSTGRESQL_PORT"
             value: "5432"
           - name: "POSTGRESQL_DB"
