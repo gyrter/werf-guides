@@ -10,7 +10,7 @@ services:
     environment:
       - "DATABASE_URL=postgres://postgres:mysecretpassword@postgresql:5432/postgres"
     image: $WERF_BASICAPP_DOCKER_IMAGE_NAME
-    command: node node_modules/node-pg-migrate/bin/node-pg-migrate up && tail -f /dev/null
+    command: ["node","node_modules/node-pg-migrate/bin/node-pg-migrate", "up"]
     depends_on:
       - "postgresql"
   app:
@@ -23,5 +23,6 @@ services:
     ports:
       - "3000:3000"
     image: $WERF_BASICAPP_DOCKER_IMAGE_NAME
+    command: ["node","/app/app.js"]
     depends_on:
       - "postgresql"
