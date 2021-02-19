@@ -19,7 +19,7 @@ git:
     install:
     - "go.*"
     setup:
-    - "cmd/demoapp/*"
+    - "examples/golang/290_local_dev/cmd/demoapp/*"
 shell:
   beforeInstall:
   - mkdir -p /app/ 

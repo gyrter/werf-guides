@@ -21,7 +21,7 @@ func main() {
 	// Get database filename.
 	dbFilePath := os.Getenv("SQLITE_FILE")
 	if dbFilePath == "" {
-		log.Println("Environment variable SQLITE_FILE is not set! I will use in-memory database!!!")
+		log.Println("Environment variable SQLITE_FILE is not set! I will use in-memory database1")
 		dbFilePath = ":memory:"
 	}
 
