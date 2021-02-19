@@ -6,7 +6,7 @@ exports.up = (pgm) => {
     pgm.createTable('labels', {
         id: 'id',
         label: { type: 'varchar(255)', notNull: true, unique: true }
-    )
+    })
 };
 
 exports.down = (pgm) => {
