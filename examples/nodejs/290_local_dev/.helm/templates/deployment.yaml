@@ -15,6 +15,10 @@ spec:
       labels:
         app: basicapp
     spec:
+{{- if .Values.dockerconfigjson }}
+      imagePullSecrets:
+      - name: registrysecret
+{{- end }}
       initContainers:
       - name: wait-postgres
         image: "foobic/pg_isready:latest"

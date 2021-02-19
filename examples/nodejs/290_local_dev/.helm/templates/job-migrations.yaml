@@ -12,6 +12,10 @@ spec:
     metadata:
       name: migrations
     spec:
+{{- if .Values.dockerconfigjson }}
+      imagePullSecrets:
+      - name: registrysecret
+{{- end }}
       restartPolicy: OnFailure
       initContainers:
       - name: wait-postgres
