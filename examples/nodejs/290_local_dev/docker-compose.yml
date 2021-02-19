@@ -1,8 +1,27 @@
 version: "3.3"
 services:
+  postgresql:
+    image: postgres:13-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - "POSTGRES_PASSWORD=mysecretpassword"
+  migrations:
+    environment:
+      - "DATABASE_URL=postgres://postgres:mysecretpassword@postgresql:5432/postgres"
+    image: $WERF_BASICAPP_DOCKER_IMAGE_NAME
+    command: node node_modules/node-pg-migrate/bin/node-pg-migrate up && tail -f /dev/null
+    depends_on:
+      - "postgresql"
   app:
     environment:
-      - "SQLITE_FILE=/app/app.db"
+      - "POSTGRESQL_HOST=postgresql"
+      - "POSTGRESQL_PORT=5432"
+      - "POSTGRESQL_DB=postgres"
+      - "POSTGRESQL_USER=postgres"
+      - "POSTGRESQL_PASSWORD=mysecretpassword"
     ports:
       - "3000:3000"
     image: $WERF_BASICAPP_DOCKER_IMAGE_NAME
+    depends_on:
+      - "postgresql"

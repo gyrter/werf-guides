@@ -3,6 +3,8 @@ configVersion: 1
 ---
 image: basicapp
 from: node:14-stretch
+docker:
+  WORKDIR: /app
 mount:
 - from: build_dir
   to: /var/cache/apt/
