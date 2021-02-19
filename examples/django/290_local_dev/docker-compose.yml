@@ -7,5 +7,5 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    command: ["python3","manage.py", "runserver", "0.0.0.0:8000"]
+    command: ["tail","-f", "/dev/null"]
     image: $WERF_BASICAPP_DOCKER_IMAGE_NAME
